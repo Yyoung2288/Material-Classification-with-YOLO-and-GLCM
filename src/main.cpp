@@ -41,7 +41,7 @@ Mat calculateGLCM(const Mat& src, int dx, int dy) {
     return glcm;
 }
 
-//cal
+//calculate
 void calculateGLCMFeatures(const Mat& glcm, double& contrast, double& homogeneity, double& energy, double& correlation) {
     contrast = 0.0;
     homogeneity = 0.0;
