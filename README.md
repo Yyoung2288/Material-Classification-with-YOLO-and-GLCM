@@ -62,6 +62,6 @@ Accurate material classification is essential in applications such as waste sort
 
 ## Author
 
-Liu Tzu-Yang (劉子揚)  
+Liu Tz-Yang (劉子揚)  
 Department of Computer Science and Engineering  
 Yuan Ze University
