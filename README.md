@@ -42,6 +42,7 @@ You can download them from the following link:
 
 * Classification performance is dependent on the quality and diversity of training data.
 * GLCM parameters may require further tuning for more diverse real-world datasets.
+* The current material classification logic is based on manually defined heuristic thresholds. While it demonstrates reasonable accuracy on controlled samples, it lacks adaptability and scalability. Future versions could leverage supervised learning models trained on GLCM feature vectors to improve classification robustness.
 
 ## Potential Improvements
 
