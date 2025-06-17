@@ -31,6 +31,13 @@ The project uses a YOLO deep learning model to detect objects within images. Aft
 * YOLOv4 (Deep Learning)
 * GLCM (Feature Extraction)
 
+## Model Weights
+
+Due to GitHub's file size limitations, the trained YOLO model weights are not included in this repository.
+You can download them from the following link:
+
+[Download YOLOv4 Weights](https://drive.google.com/drive/folders/1ZmPFxEZ_VvaQVP2O_kExBN98cEGbEjKV?usp=sharing)
+
 ## Limitations
 
 * Classification performance is dependent on the quality and diversity of training data.
