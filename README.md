@@ -1,59 +1,68 @@
 # Object Detection and Material Classification Using YOLO and GLCM
 
-This project combines YOLO object detection and Gray-Level Co-occurrence Matrix (GLCM) image processing techniques to classify detected objects based on their materials (e.g., metal, glass, plastic, paper).
+This project presents a hybrid computer vision pipeline that integrates deep learning-based object detection (YOLO) with traditional texture analysis (GLCM) to categorize detected objects by material type, such as metal, glass, plastic, and paper. The project was implemented entirely in C++ using OpenCV, and demonstrates a rule-based approach to combining statistical and learned features.
 
-## Description
+## Motivation
 
-The project uses a YOLO deep learning model to detect objects within images. After detecting objects, grayscale image processing methods and GLCM-based features (contrast, homogeneity, energy, and correlation) are extracted to classify the material of each object.
+Accurate material classification is essential in applications such as waste sorting, recycling, and manufacturing inspection. While deep learning models like YOLO are effective at detecting objects and their locations, they may not reliably distinguish between materials that share similar shapes but differ in texture. This project addresses that gap by incorporating Gray-Level Co-occurrence Matrix (GLCM) features into the analysis pipeline, leveraging fine-grained texture patterns to support post-detection material classification.
 
-## Methodology
+## Method Overview
 
-1. **YOLO Object Detection**:
+1. **Object Detection with YOLO**
+   - A YOLOv4-tiny model is used to detect objects and generate bounding boxes from input images.
+   - Custom-trained weights (`my_yolo_best.weights`) were used on a small-scale material dataset.
 
-   * YOLO (`my_yolo.cfg`, `my_yolo_best.weights`) identifies objects and their bounding boxes.
+2. **Image Preprocessing**
+   - Detected objects are cropped from the original image and converted to grayscale for texture analysis.
 
-2. **Image Preprocessing**:
+3. **GLCM Feature Extraction**
+   - Four GLCM features are computed: contrast, homogeneity, energy, and correlation.
+   - GLCMs are calculated using directional offsets such as (1, 0) and (0, 1) to capture texture variation.
 
-   * Detected objects are cropped and converted to grayscale.
+4. **Material Classification (Heuristic Approach)**  
+   - GLCM features (contrast, homogeneity, energy, correlation) are directly compared against manually defined threshold ranges.  
+   - Each material type is classified using a set of hard-coded value intervals derived from visual inspection and trial runs.  
+   - No supervised learning, clustering, or statistical modeling was involved.
 
-3. **Feature Extraction using GLCM**:
+## Technologies and Tools
 
-   * GLCM matrices are generated to analyze texture characteristics of objects.
+- **Programming Language**: C++
+- **Libraries**: OpenCV (image processing), YOLOv4-tiny (deep learning inference)
+- **Model**: YOLOv4-tiny with custom configuration and weights
 
-4. **Material Classification**:
+## Dataset and Model Weights
 
-   * GLCM features are used to classify the material type.
-
-## Technologies Used
-
-* C++
-* OpenCV (Image Processing)
-* YOLOv4 (Deep Learning)
-* GLCM (Feature Extraction)
-
-## Model Weights
-
-Due to GitHub's file size limitations, the trained YOLO model weights are not included in this repository.
-You can download them from the following link:
+- The dataset consists of images manually labeled into four material categories.
+- YOLO model weights are hosted externally due to GitHub file size restrictions.
 
 [Download YOLOv4 Weights](https://drive.google.com/drive/folders/1ZmPFxEZ_VvaQVP2O_kExBN98cEGbEjKV?usp=sharing)
 
 ## Limitations
 
-* Classification performance is dependent on the quality and diversity of training data.
-* GLCM parameters may require further tuning for more diverse real-world datasets.
+- The current material classification is purely rule-based and lacks adaptability across diverse datasets.
+- No supervised classifier was trained to generalize the GLCM features for unseen samples.
+- The dataset is relatively small and may not reflect real-world variations or edge cases.
+- Thresholds and feature selection are manually defined and may not represent optimal decision boundaries.
 
 ## Potential Improvements
 
-* Enhance material classification using supervised learning (e.g., SVM, Random Forest).
-* Implement automated tuning of GLCM parameters using optimization techniques.
+- Replace the rule-based decision logic with a supervised learning model trained on GLCM feature vectors (e.g., SVM, Random Forest).
+- Expand the dataset with real-world samples from diverse material categories.
+- Conduct hyperparameter tuning for GLCM computation (e.g., distance, angle, normalization).
+- Explore fusion techniques combining deep learning embeddings and GLCM features for more robust classification.
 
-## Application Scenario
+## Application Scenarios
 
-* Automated waste sorting
-* Recycling industry
-* Manufacturing quality control
+- Automated waste sorting systems
+- Industrial inspection and material identification
+- Lightweight, real-time material classification on embedded devices
 
 ## Demonstration
 
-[Demo Video](https://youtu.be/7BL6nNVUg5g?si=NFSCnNQaenV-8Ck4)
+[Watch Demonstration Video](https://youtu.be/7BL6nNVUg5g?si=NFSCnNQaenV-8Ck4)
+
+## Author
+
+Liu Tz-Yang (劉子揚)  
+Department of Computer Science and Engineering  
+Yuan Ze University

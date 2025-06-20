@@ -1,4 +1,4 @@
-﻿#include <opencv2/opencv.hpp>
+#include <opencv2/opencv.hpp>
 #include <iostream>
 #include "yolo_detector.h"
 #include "glcm_analyzer.h"
