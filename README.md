@@ -61,7 +61,7 @@ Accurate material classification is essential in applications such as waste sort
 
 ### Input Example
 Raw image captured before inference:
-![Input Image](data/sample_images/all.jpg)
+![Input Image](data/sample_images/input.jpg)
 
 ### Output Example
 YOLO-detected objects with bounding boxes and material classification:
